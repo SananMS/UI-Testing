@@ -38,7 +38,7 @@ public class UITest {
             Assertions.fail("Failed to open PlayTech website: " + e.getMessage());
         }
 
-        // Find internship tab coordinates
+        // Find internship tab element
         WebElement element = null;
         try {
             element = driver.findElement(By.xpath("//a[@href='/internship']"));
@@ -53,9 +53,7 @@ public class UITest {
         // Y coordinate
         int yCoordinate = element.getLocation().getY();
 
-        // Clicking on the Internship tab
         Actions action = new Actions(driver);
-
         // Increasing the value of xCoordinate for being able to click on Internship instead of Careers tab
         action.moveByOffset(xCoordinate + 10, yCoordinate).click().perform();
 
