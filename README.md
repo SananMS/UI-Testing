@@ -1,4 +1,4 @@
-# UI Automation Task - Playtech Internship
+# UI Testing Task - Playtech Internship
 **This is a Java program that uses Selenium WebDriver to automate the testing of the Playtech website. The program opens a web browser at the URL "https://www.playtech.ee", clicks on the "Internship" tab, and verifies if the "Development QA Engineer (Intern)" position is shown on the page. Finally, it exports the result to a .txt file and closes the browser.**
 
 ## Prerequisites
