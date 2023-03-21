@@ -60,7 +60,7 @@ public class UITest {
         // Check if "Development QA Engineer (Intern)" position is shown on the page
         WebElement position = null;
         try {
-            position = driver.findElement(By.xpath("//*[contains(text(),'Development QA Engineer (Intern)')]"));
+            position = driver.findElement(By.xpath("//*[contains(normalize-space(text()),'Development QA Engineer (Intern)')]"));
         } catch (Exception e) {
             // Handle the exception if the position is not found
             Assertions.fail("Failed to find Development QA Engineer (Intern) position: " + e.getMessage());
@@ -74,7 +74,7 @@ public class UITest {
     public void writePositionStatusToFile() throws IOException {
         File file = new File("position_check.txt");
         FileWriter writer = new FileWriter(file);
-        writer.write("Position Status: " + (isPositionShownOnThePage ? "available" : "not available"));
+        writer.write("Position Status: " + (isPositionShownOnThePage ? "available" : "unavailable"));
         writer.close();
     }
 
