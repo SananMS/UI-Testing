@@ -43,7 +43,6 @@ public class Page {
         } catch (IOException e) {
             throw new IOException("Unable to write to " + fileName, e);
         }
-
     }
 
     public void goToPage(String pageName) {
@@ -57,20 +56,33 @@ public class Page {
 
     public WebElement lookForElement(String elementText) {
         try {
-            return this.driver.findElement(By.xpath("//*[contains(normalize-space(text())," + "'" + elementText + "'" + ")]"));
+            //Check body and footer tags for the element content
+            return this.driver.findElement(By.xpath("//*[self::body or self::footer]//*[contains(normalize-space(text())," + "'" + elementText + "'" + ")]"));
         } catch (Exception e) {
             this.setIsStatusOK(false);
             return null;
         }
     }
 
-    public void clickElementByCoordinates(String elementText) {
+    public int[] getElementCoordinates(String elementText) {
         try {
             WebElement element = this.lookForElement(elementText);
             int xCoordinate = element.getLocation().getX();
             int yCoordinate = element.getLocation().getY();
-            // Increasing the value of xCoordinate for being able to click on Internship instead of Careers tab
-            action.moveByOffset(xCoordinate + 10, yCoordinate).click().perform();
+            return new int[]{xCoordinate,yCoordinate};
+        } catch (Exception e) {
+            this.setIsStatusOK(false);
+            return null;
+        }
+
+    }
+
+    public void clickElementByCoordinates(int[] coordinates) {
+        try {
+            int x = coordinates[0];
+            int y = coordinates[1];
+            // Increasing the value of x for being able to click on Internship instead of Careers tab
+            action.moveByOffset(x + 10, y).click().perform();
         } catch (Exception e) {
             this.setIsStatusOK(false);
         }
