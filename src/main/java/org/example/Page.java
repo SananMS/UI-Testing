@@ -14,14 +14,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Page {
     private final WebDriver driver;
-    private final ChromeOptions options;
     private final Actions action;
     private boolean isStatusOK;
 
     public Page() {
         this.isStatusOK = true;
-        this.options = new ChromeOptions();
-        this.options.addArguments("--start-maximized");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--start-maximized");
         this.driver = new ChromeDriver(options);
         this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         this.action = new Actions(this.driver);
