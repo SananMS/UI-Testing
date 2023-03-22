@@ -55,17 +55,18 @@ public class Page {
 
     }
 
-    public WebElement lookForElement(String elementName) {
+    public WebElement lookForElement(String elementText) {
         try {
-            return this.driver.findElement(By.xpath("//*[contains(normalize-space(text())," + "'" + elementName + "'" + ")]"));
+            return this.driver.findElement(By.xpath("//*[contains(normalize-space(text())," + "'" + elementText + "'" + ")]"));
         } catch (Exception e) {
             this.setIsStatusOK(false);
             return null;
         }
     }
 
-    public void clickByCoordinate(WebElement element) {
+    public void clickElementByCoordinates(String elementText) {
         try {
+            WebElement element = this.lookForElement(elementText);
             int xCoordinate = element.getLocation().getX();
             int yCoordinate = element.getLocation().getY();
             // Increasing the value of xCoordinate for being able to click on Internship instead of Careers tab
@@ -75,6 +76,24 @@ public class Page {
         }
     }
 
+    public void clickElementByName(String elementText) {
+        try {
+            WebElement element = this.lookForElement(elementText);
+            element.click();
+        } catch (Exception e) {
+            this.setIsStatusOK(false);
+        }
+    }
+
+    public void lookForPositionShownOnWebPage(String positionName) {
+        try {
+            WebElement element = this.lookForElement(positionName);
+            if(!element.isDisplayed())
+                this.setIsStatusOK(false);
+        } catch (Exception e) {
+            this.setIsStatusOK(false);
+        }
+    }
     public void quit() {
         this.driver.quit();
     }
