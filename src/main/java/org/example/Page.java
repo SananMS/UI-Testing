@@ -20,7 +20,7 @@ public class Page {
 
     public Page() {
         this.isStatusOK = true;
-        this.options = new ChromeOptions ();
+        this.options = new ChromeOptions();
         this.options.addArguments("--start-maximized");
         this.driver = new ChromeDriver(options);
         this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -42,11 +42,10 @@ public class Page {
         writer.close();
     }
 
-    public void goToPage (String pageName) {
+    public void goToPage(String pageName) {
         try {
             this.driver.get(pageName);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             this.setIsStatusOK(false);
         }
 
