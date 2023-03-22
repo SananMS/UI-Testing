@@ -16,7 +16,7 @@ public class UITest {
     public void isThePositionShownOnThePageByCoordinate() throws IOException {
         page.goToPage("https://playtech.ee/");
         page.clickElementByCoordinates("Internship");
-        page.lookForPositionShownOnWebPage("Development QA Engineer (Intern)");
+        page.lookForElementShownOnWebPage("Development QA Engineer (Intern)");
         boolean isPositionShown = page.getIsStatusOK();
         page.writePositionStatusToFile(isPositionShown, "position_check_by_coordinate.txt");
         Assertions.assertTrue(isPositionShown, "Position is not shown on the page");
@@ -26,10 +26,10 @@ public class UITest {
     public void isThePositionShownOnThePageByElement() throws IOException {
         page.goToPage("https://playtech.ee/");
         page.clickElementByName("Internship");
-        page.lookForPositionShownOnWebPage("Development QA Engineer (Intern)");
-        boolean isPositionShown = page.getIsStatusOK();
-        page.writePositionStatusToFile(isPositionShown, "position_check_by_element.txt");
-        Assertions.assertTrue(isPositionShown, "Position is not shown on the page");
+        page.lookForElementShownOnWebPage("Development QA Engineer (Intern)");
+        boolean isElementShown = page.getIsStatusOK();
+        page.writePositionStatusToFile(isElementShown, "position_check_by_element.txt");
+        Assertions.assertTrue(isElementShown, "Position is not shown on the page");
     }
 
     @AfterEach

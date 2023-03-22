@@ -35,7 +35,7 @@ public class Page {
     }
 
     public void writePositionStatusToFile(boolean isPositionShownOnThePage, String fileName) throws IOException {
-        try{
+        try {
             File file = new File(fileName);
             FileWriter writer = new FileWriter(file);
             writer.write("Position Status: " + (isPositionShownOnThePage ? "available" : "unavailable"));
@@ -85,15 +85,16 @@ public class Page {
         }
     }
 
-    public void lookForPositionShownOnWebPage(String positionName) {
+    public void lookForElementShownOnWebPage(String elementText) {
         try {
-            WebElement element = this.lookForElement(positionName);
-            if(!element.isDisplayed())
+            WebElement element = this.lookForElement(elementText);
+            if (!element.isDisplayed())
                 this.setIsStatusOK(false);
         } catch (Exception e) {
             this.setIsStatusOK(false);
         }
     }
+
     public void quit() {
         this.driver.quit();
     }
