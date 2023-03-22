@@ -35,10 +35,15 @@ public class Page {
     }
 
     public void writePositionStatusToFile(boolean isPositionShownOnThePage, String fileName) throws IOException {
-        File file = new File(fileName);
-        FileWriter writer = new FileWriter(file);
-        writer.write("Position Status: " + (isPositionShownOnThePage ? "available" : "unavailable"));
-        writer.close();
+        try{
+            File file = new File(fileName);
+            FileWriter writer = new FileWriter(file);
+            writer.write("Position Status: " + (isPositionShownOnThePage ? "available" : "unavailable"));
+            writer.close();
+        } catch (IOException e) {
+            throw new IOException("Unable to write to " + fileName, e);
+        }
+
     }
 
     public void goToPage(String pageName) {
