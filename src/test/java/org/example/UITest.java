@@ -17,9 +17,9 @@ public class UITest {
         page.goToPage("https://playtech.ee/");
         page.clickElementByCoordinates("Internship");
         page.lookForElementShownOnWebPage("Development QA Engineer (Intern)");
-        boolean isPositionShown = page.getIsStatusOK();
-        page.writePositionStatusToFile(isPositionShown, "position_check_by_coordinate.txt");
-        Assertions.assertTrue(isPositionShown, "Position is not shown on the page");
+        boolean isElementShown = page.getIsStatusOK();
+        page.writePositionStatusToFile(isElementShown, "position_check_by_coordinate.txt");
+        Assertions.assertTrue(isElementShown, "Position is not shown on the page");
     }
 
     @Test
