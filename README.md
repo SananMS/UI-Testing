@@ -36,6 +36,8 @@ Tests included 2 different scenarios:
 
 Firstly, a new page is created. Later, the page https://www.playtech.ee is visited. Then, the "Internship" tab is clicked based on the tests (by element or element coordinates). Eventually, the position "Development QA Engineer (Intern)" is searched in the web page. It is also verified that the position is visible on the webpage.
 It concludes with both tests returning "Assertion failure" as the previous position text is neither found nor visible on the web page.
-Furthermore, most of the main methods included try-catch blocks to take further error messages and at the end check if the position is shown. This was done thanks to the isStatusOK variable as it is "true" by default; however, if there was an error caught during the whole process it would become "false". 
+Furthermore, most of the main methods included try-catch blocks to take further error messages and at the end check if the position is shown. This was done thanks to the isStatusOK variable as it is "true" by default; however, if there was an error caught during the whole process it would become "false".\
+\
+**Note: For the purpose of getting the whole HTML file implicit wait is used before the retrieval of the elements**
 ## Output
 The program generates a file named position_check.txt in the current directory. The file contains a single line of text indicating the status of the position check, either "Position Status: available" or "Position Status: unavailable", depending on the result of the check.
