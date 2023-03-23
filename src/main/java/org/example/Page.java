@@ -74,7 +74,7 @@ public class Page {
             WebElement element = this.lookForElement(elementText);
             int xCoordinate = element.getLocation().getX();
             int yCoordinate = element.getLocation().getY();
-            return new int[]{xCoordinate,yCoordinate};
+            return new int[]{xCoordinate, yCoordinate};
         } catch (Exception e) {
             this.setIsStatusOK(false);
             System.out.println("Cannot get the coordinates of " + elementText);
