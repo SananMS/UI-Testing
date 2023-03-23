@@ -34,14 +34,15 @@ public class Page {
         return this.isStatusOK;
     }
 
-    public void writePositionStatusToFile(boolean isPositionShownOnThePage, String fileName) throws IOException {
+    public void writePositionStatusToFile(boolean isPositionShownOnThePage, String fileName) {
         try {
             File file = new File(fileName);
             FileWriter writer = new FileWriter(file);
             writer.write("Position Status: " + (isPositionShownOnThePage ? "available" : "unavailable"));
             writer.close();
         } catch (IOException e) {
-            throw new IOException("Unable to write to " + fileName, e);
+            System.out.println("Cannot write to " + fileName);
+            e.printStackTrace();
         }
     }
 
@@ -50,6 +51,8 @@ public class Page {
             this.driver.get(pageName);
         } catch (Exception e) {
             this.setIsStatusOK(false);
+            System.out.println("Cannot connect to " + pageName);
+            e.printStackTrace();
         }
 
     }
@@ -60,6 +63,8 @@ public class Page {
             return this.driver.findElement(By.xpath("//*[self::body or self::footer]//*[contains(normalize-space(text())," + "'" + elementText + "'" + ")]"));
         } catch (Exception e) {
             this.setIsStatusOK(false);
+            System.out.println("Cannot find the element that contains " + elementText);
+            e.printStackTrace();
             return null;
         }
     }
@@ -72,6 +77,8 @@ public class Page {
             return new int[]{xCoordinate,yCoordinate};
         } catch (Exception e) {
             this.setIsStatusOK(false);
+            System.out.println("Cannot get the coordinates of " + elementText);
+            e.printStackTrace();
             return null;
         }
 
@@ -85,6 +92,8 @@ public class Page {
             action.moveByOffset(x + 10, y).click().perform();
         } catch (Exception e) {
             this.setIsStatusOK(false);
+            System.out.println("Cannot click on the element");
+            e.printStackTrace();
         }
     }
 
@@ -94,6 +103,8 @@ public class Page {
             element.click();
         } catch (Exception e) {
             this.setIsStatusOK(false);
+            System.out.println("Cannot click on the element that contains " + elementText);
+            e.printStackTrace();
         }
     }
 
@@ -104,6 +115,8 @@ public class Page {
                 this.setIsStatusOK(false);
         } catch (Exception e) {
             this.setIsStatusOK(false);
+            System.out.println("Element " + elementText + " is not visible");
+            e.printStackTrace();
         }
     }
 

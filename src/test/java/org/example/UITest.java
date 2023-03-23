@@ -2,8 +2,6 @@ package org.example;
 
 import org.junit.jupiter.api.*;
 
-import java.io.IOException;
-
 public class UITest {
     Page page;
 
@@ -14,7 +12,7 @@ public class UITest {
     }
 
     @Test
-    public void isThePositionShownOnThePageByElement() throws IOException {
+    public void isThePositionShownOnThePageByElement() {
         page.clickElementByName("Internship");
         page.lookForElementShownOnWebPage("Development QA Engineer (Intern)");
         boolean isElementShown = page.getIsStatusOK();
@@ -23,7 +21,7 @@ public class UITest {
     }
 
     @Test
-    public void isThePositionShownOnThePageByCoordinate() throws IOException {
+    public void isThePositionShownOnThePageByCoordinate() {
         int[] coordinates = page.getElementCoordinates("Internship");
         page.clickElementByCoordinates(coordinates);
         page.lookForElementShownOnWebPage("Development QA Engineer (Intern)");
